@@ -39,31 +39,36 @@
 </script>
 <body>
 
-<div class="dataTable-wrapper center-block" style="width: 800px;" >
+<div class="dataTable-wrapper center-block" style="width: 1200px;" >
     <div class="title row" style="margin-bottom: 10px;">
-        <div class="col-md-4 col-md-offset-4">学生假期离校情况</div>
+        <div class="col-md-4 col-md-offset-4">维修记录</div>
         <button class="col-md-1 btn btn-primary" id="add">新增</button>
     </div>
     <table id="dataTable" class="table table-striped table-hover table-bordered">
         <tr role="row" id="tr_head">
-            <th>学号</th>
-            <th>姓名</th>
-            <th>离校与否</th>
-            <th>离校时间</th>
-            <th>回校时间</th>
+            <th>宿舍编号</th>
+            <th>报告时间</th>
+            <th>报告人</th>
+            <th>维修原因</th>
+            <th>维修物品</th>
+            <th>数量</th>
+            <th>价格</th>
+            <th>维修人</th>
+            <th>维修时间</th>
             <th>备注</th>
             <th>操作</th>
         </tr>
         <c:forEach items="${tbUsers}" var="u">
             <tr class="text-center">
-                <td><c:out value="${u.studentid}"/></td>
-                <td><c:out value="${u.studentname}"/></td>
-                <td>
-                    <c:if test="${u.stay=='1'}">离校</c:if>
-                    <c:if test="${u.stay=='0'}">在校</c:if>
-                </td>
-                <td><c:out value="${u.awaytime1}"/></td>
-                <td><c:out value="${u.backtime1}"/></td>
+                <td><c:out value="${u.dormitoryid}"/></td>
+                <td><c:out value="${u.reporttime1}"/></td>
+                <td><c:out value="${u.reportman}"/></td>
+                <td><c:out value="${u.repreason}"/></td>
+                <td><c:out value="${u.equipment}"/></td>
+                <td><c:out value="${u.repquantity}"/></td>
+                <td><c:out value="${u.repprice}"/></td>
+                <td><c:out value="${u.repman}"/></td>
+                <td><c:out value="${u.reptime}"/></td>
                 <td><c:out value="${u.remark}"/></td>
                 <td><a href="/dormitory/iframe/stayOutLate/change?studentid=<c:out value="${u.studentid}"/>">修改</a>
                     <a onclick="return confirm('确认删除此用户？')" href="/dormitory/iframe/stayOutLate/del?studentid=<c:out value="${u.studentid}"/>">删除</a>
